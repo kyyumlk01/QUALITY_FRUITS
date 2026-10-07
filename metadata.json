@@ -1,0 +1,6 @@
+{
+  "name": "Quality Fruits – Mango Protection Bags",
+  "description": "Protect your mangoes with practical, breathable mango protection bags designed for healthier, cleaner, and higher quality fruit harvests.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

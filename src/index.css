@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+:root {
+  --primary-deep: #143826;
+  --primary-forest: #0d261a;
+  --secondary-green: #2d6a4f;
+  --fresh-green: #40916c;
+  --accent-gold: #f29c11;
+  --accent-warm: #ffb703;
+  --bg-cream: #faf9f5;
+  --bg-warm-card: #ffffff;
+  --text-main: #1c2d24;
+  --text-muted: #52665b;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-cream);
+  color: var(--text-main);
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom subtle keyframe animations for floating elements */
+@keyframes subtle-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes subtle-float-slow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(1deg);
+  }
+}
+
+@keyframes leaf-sway {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+.animate-subtle-float {
+  animation: subtle-float 6s ease-in-out infinite;
+}
+
+.animate-subtle-float-slow {
+  animation: subtle-float-slow 9s ease-in-out infinite;
+}
+
+.animate-leaf-sway {
+  animation: leaf-sway 7s ease-in-out infinite;
+}
