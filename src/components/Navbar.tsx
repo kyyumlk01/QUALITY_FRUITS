@@ -46,24 +46,32 @@ export const Navbar: React.FC<NavbarProps> = ({
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#FAF9F5]/90 backdrop-blur-md shadow-sm border-b border-[#E8E6DD]/80 py-3.5'
-          : 'bg-transparent py-5'
+          ? 'bg-[#FAF9F5]/90 backdrop-blur-md shadow-sm border-b border-[#E8E6DD]/80 py-2.5 sm:py-3.5'
+          : 'bg-transparent py-3 sm:py-5'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          {/* Zone 1: Single text element wordmark */}
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between gap-2">
+          {/* Left Side: Logo + Brand Name */}
           <button
             onClick={() => handleLinkClick('home')}
-            className="group flex items-center gap-2 text-left cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#143826] rounded-md"
+            className="group flex items-center gap-2 sm:gap-3 text-left cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#143826] rounded-md shrink-0 min-w-0"
             aria-label="Quality Fruits Home"
           >
-            <span className="text-xl sm:text-2xl font-bold tracking-tight text-[#143826] font-display transition-colors">
+            <div className="relative w-[34px] h-[34px] sm:w-10 sm:h-10 rounded-lg overflow-hidden bg-black shrink-0 shadow-sm border border-[#143826]/20 transition-transform group-hover:scale-105">
+              <img
+                src="/images/quality-fruits-logo.png"
+                alt="Quality Fruits"
+                className="w-full h-full object-cover"
+                loading="eager"
+              />
+            </div>
+            <span className="text-[18px] sm:text-2xl font-bold tracking-tight text-[#143826] font-display whitespace-nowrap transition-colors truncate">
               {BUSINESS_CONFIG.companyName}
             </span>
           </button>
 
-          {/* Zone 2: Navigation Links */}
+          {/* Center (Desktop only): Navigation Links */}
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-[#44564C]" aria-label="Main Navigation">
             {navLinks.map((link) => {
               const isActive = activeSection === link.id;
@@ -84,24 +92,27 @@ export const Navbar: React.FC<NavbarProps> = ({
             })}
           </nav>
 
-          {/* Zone 3: Primary Action & Mobile Menu Toggle */}
-          <div className="flex items-center gap-3">
+          {/* Right Side: Order Action & Mobile Hamburger */}
+          <div className="flex items-center gap-1.5 sm:gap-2 md:gap-3 shrink-0">
+            {/* Order Button: Compact on mobile, standard on desktop */}
             <button
               onClick={onOpenOrderModal}
-              className="relative inline-flex items-center gap-2 px-5 py-2.5 text-xs sm:text-sm font-semibold tracking-wide text-white bg-[#143826] hover:bg-[#1E4D35] active:scale-[0.98] transition-all duration-200 rounded-lg shadow-sm border border-[#143826] cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#143826]"
+              className="relative inline-flex items-center justify-center gap-1.5 md:gap-2 px-2.5 py-1.5 sm:px-3 sm:py-2 md:px-5 md:py-2.5 text-xs md:text-sm font-semibold tracking-wide text-white bg-[#143826] hover:bg-[#1E4D35] active:scale-[0.98] transition-all duration-200 rounded-lg shadow-sm border border-[#143826] cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#143826] shrink-0"
+              aria-label="Order Mango Protection Bags"
             >
-              <ShoppingBag className="w-4 h-4 text-[#F29C11]" />
-              <span>Order Now</span>
+              <ShoppingBag className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#F29C11] shrink-0" />
+              <span className="md:hidden">Order</span>
+              <span className="hidden md:inline">Order Now</span>
             </button>
 
             {/* Mobile Hamburger Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-[#143826] hover:bg-[#EAE8DD]/60 rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#143826]"
+              className="md:hidden w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center text-[#143826] hover:bg-[#EAE8DD]/60 rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#143826] shrink-0"
               aria-label={mobileMenuOpen ? 'Close Menu' : 'Open Menu'}
               aria-expanded={mobileMenuOpen}
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
             </button>
           </div>
         </div>

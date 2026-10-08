@@ -19,7 +19,7 @@ export const BUSINESS_CONFIG: BusinessConfig = {
   contact: {
     phone: '7017685484',                  // Raw phone number for tel: links
     phoneFormatted: '7017685484',          // Formatted display number
-    email: 'hello@example.com',            // Company inquiry email
+    email: 'er.azeem7@gmail.com',          // Company inquiry email
     address: 'Image Associate, Near Godawari Hotel, Delhi Road, Roorkee',
     city: 'Haridwar',
     state: 'Uttarakhand',

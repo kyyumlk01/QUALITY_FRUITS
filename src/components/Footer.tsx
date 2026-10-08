@@ -18,9 +18,19 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenOrderModal }) 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-12 border-b border-white/10">
           {/* Brand & Purpose Column */}
           <div className="lg:col-span-5 space-y-4">
-            <h3 className="text-2xl font-bold font-display text-white tracking-tight">
-              {BUSINESS_CONFIG.companyName}
-            </h3>
+            <div className="flex items-center gap-3">
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl overflow-hidden bg-black shrink-0 border border-white/15 shadow-md">
+                <img
+                  src="/images/quality-fruits-logo.png"
+                  alt="Quality Fruits"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <h3 className="text-2xl font-bold font-display text-white tracking-tight">
+                {BUSINESS_CONFIG.companyName}
+              </h3>
+            </div>
 
             <p className="text-[#A4CBB4] text-sm max-w-sm leading-relaxed">
               Smart protection for better mangoes. Dedicated to preserving harvest quality and agricultural yield through practical, high-grade fruit protection bags.
