@@ -84,28 +84,36 @@ export const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onOpenOrderMod
                     key={step.step}
                     onClick={() => setActiveStep(index)}
                     onMouseEnter={() => setActiveStep(index)}
-                    className={`cursor-pointer rounded-2xl p-6 transition-all duration-300 border ${
+                    className={`cursor-pointer rounded-2xl p-5 sm:p-6 transition-all duration-300 border ${
                       isSelected
                         ? 'bg-[#FAF9F5] border-[#2D6A4F]/60 shadow-md translate-x-1'
                         : 'bg-[#FFFFFF] border-[#EAE8DD] hover:border-[#D0CDC2] hover:bg-[#FAF9F5]/50'
                     }`}
                   >
-                    <div className="flex items-start gap-4">
-                      {/* Number circle */}
-                      <span
-                        className={`w-10 h-10 rounded-xl flex items-center justify-center font-bold font-display text-sm shrink-0 transition-colors ${
-                          isSelected
-                            ? 'bg-[#143826] text-[#F29C11]'
-                            : 'bg-[#F2EFE6] text-[#4B5E53]'
-                        }`}
-                      >
-                        {step.step}
-                      </span>
+                    <div className="flex items-start gap-3.5 sm:gap-4">
+                      {/* Step visual demonstration thumbnail */}
+                      <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden shrink-0 border border-[#E7E5DC] bg-[#EAE8DD] shadow-xs">
+                        <img
+                          src={step.image}
+                          alt={step.imageAlt}
+                          className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                          loading="lazy"
+                        />
+                        <span
+                          className={`absolute bottom-1 right-1 px-1.5 py-0.5 rounded text-[10px] font-bold font-display shadow-xs ${
+                            isSelected
+                              ? 'bg-[#143826] text-[#F29C11]'
+                              : 'bg-black/75 text-white'
+                          }`}
+                        >
+                          {step.step}
+                        </span>
+                      </div>
 
-                      <div className="flex-1">
-                        <div className="flex items-center justify-between">
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between gap-2">
                           <h3
-                            className={`text-lg font-bold font-display transition-colors ${
+                            className={`text-base sm:text-lg font-bold font-display transition-colors ${
                               isSelected ? 'text-[#143826]' : 'text-[#2D3E35]'
                             }`}
                           >
@@ -113,19 +121,19 @@ export const ProductShowcase: React.FC<ProductShowcaseProps> = ({ onOpenOrderMod
                           </h3>
 
                           {isSelected && (
-                            <span className="text-xs font-semibold text-[#2D6A4F] flex items-center gap-1">
+                            <span className="text-xs font-semibold text-[#2D6A4F] flex items-center gap-1 shrink-0">
                               <CheckCircle2 className="w-3.5 h-3.5" />
-                              Active Step
+                              <span className="hidden sm:inline">Active Step</span>
                             </span>
                           )}
                         </div>
 
-                        <p className="mt-2 text-sm text-[#52665B] leading-relaxed">
+                        <p className="mt-1.5 text-xs sm:text-sm text-[#52665B] leading-relaxed">
                           {step.description}
                         </p>
 
                         {isSelected && (
-                          <div className="mt-3 pt-3 border-t border-[#EAE8DD] text-xs text-[#2D6A4F] font-medium">
+                          <div className="mt-2.5 pt-2.5 border-t border-[#EAE8DD] text-xs text-[#2D6A4F] font-medium">
                             Practical Tip: {step.tip}
                           </div>
                         )}

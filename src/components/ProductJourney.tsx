@@ -37,7 +37,7 @@ export const ProductJourney: React.FC = () => {
             aria-hidden="true"
           />
 
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-4 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4 relative z-10">
             {JOURNEY_STAGES.map((stage, idx) => {
               const IconComp = stageIcons[idx] || Sprout;
               const isSelected = activeStage === idx;
@@ -46,41 +46,57 @@ export const ProductJourney: React.FC = () => {
                 <div
                   key={stage.stage}
                   onClick={() => setActiveStage(idx)}
-                  className={`group relative rounded-2xl p-6 transition-all duration-300 cursor-pointer border ${
+                  className={`group relative rounded-2xl p-5 sm:p-6 transition-all duration-300 cursor-pointer border flex flex-col justify-between ${
                     isSelected
                       ? 'bg-white border-[#2D6A4F] shadow-lg -translate-y-1'
-                      : 'bg-white/70 border-[#E7E5DC] hover:border-[#2D6A4F]/40 hover:bg-white'
+                      : 'bg-white/80 border-[#E7E5DC] hover:border-[#2D6A4F]/40 hover:bg-white'
                   }`}
                 >
-                  {/* Top indicator & icon */}
-                  <div className="flex items-center justify-between mb-4">
-                    <div
-                      className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors ${
-                        isSelected
-                          ? 'bg-[#143826] text-[#F29C11]'
-                          : 'bg-[#F0F7F2] text-[#2D6A4F] group-hover:bg-[#143826] group-hover:text-[#F29C11]'
-                      }`}
-                    >
-                      <IconComp className="w-6 h-6" />
+                  <div>
+                    {/* Stage Visual Image: Controlled 4:3 Aspect Ratio */}
+                    <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 bg-[#EAE8DD] border border-[#E7E5DC]">
+                      <img
+                        src={stage.image}
+                        alt={stage.imageAlt}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                      <div className="absolute top-2 left-2 px-2 py-0.5 rounded text-[10px] font-bold tracking-wider uppercase bg-[#143826]/90 text-[#F29C11] backdrop-blur-xs">
+                        {stage.stage}
+                      </div>
                     </div>
 
-                    <span className="text-xs font-bold tracking-widest text-[#2D6A4F] uppercase">
-                      {stage.stage}
-                    </span>
+                    {/* Top indicator & icon */}
+                    <div className="flex items-center justify-between mb-3">
+                      <h3 className="text-lg font-bold text-[#143826] font-display">
+                        {stage.title}
+                      </h3>
+
+                      <div
+                        className={`w-9 h-9 rounded-lg flex items-center justify-center transition-colors shrink-0 ${
+                          isSelected
+                            ? 'bg-[#143826] text-[#F29C11]'
+                            : 'bg-[#F0F7F2] text-[#2D6A4F] group-hover:bg-[#143826] group-hover:text-[#F29C11]'
+                        }`}
+                      >
+                        <IconComp className="w-4 h-4" />
+                      </div>
+                    </div>
+
+                    <div className="text-xs font-semibold text-[#8B6B17] mb-2">
+                      {stage.subtitle}
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-sm text-[#52665B] leading-relaxed">
+                      {stage.description}
+                    </p>
                   </div>
 
-                  {/* Title & Subtitle */}
-                  <h3 className="text-lg font-bold text-[#143826] font-display mb-1">
-                    {stage.title}
-                  </h3>
-                  <div className="text-xs font-semibold text-[#8B6B17] mb-3">
-                    {stage.subtitle}
+                  <div className="mt-4 pt-3 border-t border-[#F2EFE6] flex items-center justify-between text-xs text-[#6B7D73]">
+                    <span>Orchard Stage {idx + 1}</span>
+                    <span className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-[#F29C11]' : 'bg-[#E7E5DC]'}`} />
                   </div>
-
-                  {/* Description */}
-                  <p className="text-sm text-[#52665B] leading-relaxed">
-                    {stage.description}
-                  </p>
                 </div>
               );
             })}

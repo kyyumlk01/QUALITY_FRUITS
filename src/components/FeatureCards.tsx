@@ -37,33 +37,41 @@ export const FeatureCards: React.FC = () => {
             return (
               <div
                 key={feature.index}
-                className="group relative bg-[#FFFFFF] rounded-2xl p-7 border border-[#E7E5DC] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg hover:border-[#2D6A4F]/40 flex flex-col justify-between"
+                className="group relative bg-[#FFFFFF] rounded-2xl p-6 border border-[#E7E5DC] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg hover:border-[#2D6A4F]/40 flex flex-col justify-between"
               >
-                {/* Top Row: Natural human editorial index and icon */}
                 <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="text-xs font-bold tracking-widest text-[#2D6A4F] uppercase">
+                  {/* Visual Demonstration Image: Controlled 4:3 Aspect Ratio */}
+                  <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-5 bg-[#EAE8DD] border border-[#E7E5DC]">
+                    <img
+                      src={feature.image}
+                      alt={feature.imageAlt}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div className="absolute top-2.5 left-2.5 bg-white/95 backdrop-blur-sm px-2.5 py-1 rounded-md text-[11px] font-bold text-[#143826] border border-[#E7E5DC] shadow-xs">
                       {feature.index}. {feature.tag}
-                    </span>
-
-                    <div className="w-10 h-10 rounded-xl bg-[#F0F7F2] text-[#2D6A4F] group-hover:bg-[#143826] group-hover:text-[#F29C11] transition-colors duration-300 flex items-center justify-center">
-                      <IconComponent className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
                     </div>
                   </div>
 
-                  {/* Card Title */}
-                  <h3 className="text-xl font-bold text-[#143826] font-display mb-3 group-hover:text-[#2D6A4F] transition-colors">
-                    {feature.title}
-                  </h3>
+                  {/* Title & Icon Header */}
+                  <div className="flex items-start justify-between gap-3 mb-2">
+                    <h3 className="text-lg sm:text-xl font-bold text-[#143826] font-display group-hover:text-[#2D6A4F] transition-colors">
+                      {feature.title}
+                    </h3>
 
-                  {/* Description */}
+                    <div className="w-8 h-8 rounded-lg bg-[#F0F7F2] text-[#2D6A4F] group-hover:bg-[#143826] group-hover:text-[#F29C11] transition-colors duration-300 flex items-center justify-center shrink-0">
+                      <IconComponent className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" />
+                    </div>
+                  </div>
+
+                  {/* Simple, Human-Friendly Description */}
                   <p className="text-sm text-[#52665B] leading-relaxed">
                     {feature.description}
                   </p>
                 </div>
 
                 {/* Subtle Bottom Accent Indicator */}
-                <div className="mt-6 pt-4 border-t border-[#F2EFE6] flex items-center justify-between text-xs text-[#6B7D73]">
+                <div className="mt-6 pt-3.5 border-t border-[#F2EFE6] flex items-center justify-between text-xs text-[#6B7D73]">
                   <span>Field Proven</span>
                   <span className="w-1.5 h-1.5 rounded-full bg-[#E7E5DC] group-hover:bg-[#F29C11] transition-colors" />
                 </div>

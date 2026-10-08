@@ -38,31 +38,39 @@ export const TrustHighlights: React.FC = () => {
             return (
               <div
                 key={item.title}
-                className="relative bg-[#FAF9F5] rounded-2xl p-8 border border-[#E7E5DC] transition-all duration-300 hover:border-[#2D6A4F]/50 hover:shadow-md flex flex-col justify-between"
+                className="relative bg-[#FAF9F5] rounded-2xl p-6 border border-[#E7E5DC] transition-all duration-300 hover:border-[#2D6A4F]/50 hover:shadow-md flex flex-col justify-between"
               >
                 <div>
-                  <div className="w-12 h-12 rounded-xl bg-[#EAF5EF] text-[#2D6A4F] flex items-center justify-center mb-6">
-                    <IconComp className="w-6 h-6" />
+                  {/* Highlight Visual Image: Demonstrating the value */}
+                  <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-5 bg-[#EAE8DD] border border-[#E7E5DC]">
+                    <img
+                      src={item.image}
+                      alt={item.imageAlt}
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div className="absolute top-2.5 left-2.5 bg-white/95 backdrop-blur-sm px-2.5 py-1 rounded-md text-[11px] font-bold text-[#143826] border border-[#E7E5DC] shadow-xs">
+                      {item.badge}
+                    </div>
                   </div>
 
-                  {/* Clean unboxed tag */}
-                  <div className="text-xs font-bold tracking-wider text-[#2D6A4F] uppercase mb-2">
-                    {item.badge}
+                  <div className="flex items-center gap-2.5 mb-2.5">
+                    <div className="w-8 h-8 rounded-lg bg-[#EAF5EF] text-[#2D6A4F] flex items-center justify-center shrink-0">
+                      <IconComp className="w-4 h-4" />
+                    </div>
+                    <h3 className="text-xl font-bold text-[#143826] font-display">
+                      {item.title}
+                    </h3>
                   </div>
-
-                  {/* Large visual headline */}
-                  <h3 className="text-2xl font-bold text-[#143826] font-display mb-3">
-                    {item.title}
-                  </h3>
 
                   <p className="text-sm text-[#52665B] leading-relaxed">
                     {item.description}
                   </p>
                 </div>
 
-                <div className="mt-8 pt-4 border-t border-[#EAE8DD] flex items-center gap-2 text-xs text-[#728379]">
+                <div className="mt-6 pt-3.5 border-t border-[#EAE8DD] flex items-center gap-2 text-xs text-[#728379]">
                   <span className="w-2 h-2 rounded-full bg-[#2D6A4F]" />
-                  <span>Verified Standard</span>
+                  <span>Field Verified</span>
                 </div>
               </div>
             );
